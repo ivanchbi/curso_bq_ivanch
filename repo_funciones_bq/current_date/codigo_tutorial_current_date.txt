@@ -1,0 +1,47 @@
+
+
+select current_date();
+
+
+
+select current_date('Asia/Shanghai’);
+
+
+
+with 
+data_prueba as 
+(
+  select '1kg tomate' as transaccion, 1000 as monto, current_date() as fecha
+  union all 
+  select '1kg limon' as transaccion, 1500 as monto, date_sub(current_date(), interval 1 day) as fecha
+  union all 
+  select '1 lechuga' as transaccion, 1000 as monto, cast('2025-02-09' as date) as fecha
+  union all 
+  select '1kg manzana' as transaccion, 1000 as monto, cast('2025-02-05' as date) as fecha
+  union all 
+  select '2kg naranja' as transaccion, 1000 as monto, cast('2025-01-31' as date) as fecha
+  union all 
+  select '3kg arandanos' as transaccion, 1000 as monto, cast('2025-01-31' as date) as fecha
+)
+/*
+select *
+from data_prueba
+*/
+/*
+select *
+from data_prueba
+where fecha = current_date()
+*/
+
+/*
+select *
+from data_prueba
+where fecha >= '2025-02-01' and fecha < current_date()
+*/
+
+/*
+select *
+  ,if(fecha = current_date(), 'compra de hoy','compra de otro dia') as compra_hoy
+from data_prueba
+*/
+
