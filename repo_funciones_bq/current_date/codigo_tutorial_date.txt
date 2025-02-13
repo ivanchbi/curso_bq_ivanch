@@ -1,0 +1,34 @@
+with 
+datos as 
+(
+  select 1 as id_cliente, 'Eduardo' as nombre_cliente, 'compra televisor' as detalle_compra, 700000 as monto, 2024 as ano, 10 as mes, 1 as dia
+  union all 
+  select 2 as id_cliente, 'Sergio' as nombre_cliente, 'compra celular' as detalle_compra, 1000000 as monto, 2025 as ano, 2 as mes, 10 as dia
+  union all 
+  select 3 as id_cliente, 'Martin' as nombre_cliente, 'compra ps5' as detalle_compra, 600000 as monto, 2025 as ano, 1 as mes, 17 as dia
+)
+/*
+select * 
+from datos
+*/
+
+select *,
+  date(ano,mes,dia) as fecha_transaccion
+from datos
+
+
+
+--`curso-bigquery-450022.aprendiendo_bq.retail_transaction`
+
+SELECT 
+customer_id
+,transaction_date_timestamp_utc
+,transaction_datetime_utc 
+
+,date(transaction_date_timestamp_utc) as timestamp_a_date
+,date(transaction_datetime_utc ) as datetime_a_date
+
+,date(transaction_date_timestamp_utc, "Asia/Shanghai") as timestamp_a_date_shanghai
+
+
+FROM `curso-bigquery-450022.aprendiendo_bq.retail_transaction` 
