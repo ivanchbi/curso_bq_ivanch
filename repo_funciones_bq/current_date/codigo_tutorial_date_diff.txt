@@ -1,0 +1,40 @@
+select date_diff(date '2025-02-10', date '2025-01-17’,day)
+
+
+select date_diff(date '2025-02-10', date '2025-02-09’,day)
+
+
+
+
+
+select date_diff(date '2025-02-10', date '2025-02-09',week)
+
+select date_diff(date '2025-02-09’, date '2025-02-08’,week)
+
+select date_diff(date '2025-02-10', date '2025-02-09’,isoweek)
+
+select date_diff(date '2025-02-01', date '2025-01-31',month)
+select date_diff(date '2025-02-01', date '2024-10-10',month)
+
+select date_diff(date '2025-01-01', date '2024-12-31',year)
+
+
+
+SELECT 
+customer_id
+,product_id
+,product_category
+,transaction_date_chile
+,date_diff(current_date(), transaction_date_chile,day) as hace_cuantos_dias_se_realizo_la_transaccion
+FROM `curso-bigquery-450022.aprendiendo_bq.retail_transaction` 
+
+
+
+SELECT 
+customer_id
+,product_id
+,product_category
+,transaction_date_chile
+,date_diff(current_date(), transaction_date_chile,day) as hace_cuantos_dias_se_realizo_la_transaccion
+FROM `curso-bigquery-450022.aprendiendo_bq.retail_transaction` 
+where date_diff(current_date(), transaction_date_chile,day) <= 90
