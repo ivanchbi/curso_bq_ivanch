@@ -1,0 +1,24 @@
+select current_date();
+
+select current_timestamp();
+select date_trunc(current_timestamp(),day);
+
+select date_trunc(current_date(), week);
+select date_trunc(current_date(), isoweek);
+
+
+select date_trunc(current_date(), month);
+
+select date_trunc(current_date(), quarter);
+
+select date_trunc(current_date(), year);
+
+
+select date_trunc(date '2025-04-15', quarter);
+
+
+select date_trunc(current_timestamp(), hour);
+
+select date_trunc(current_timestamp(), minute);
+
+select date_trunc(current_timestamp(), second);
