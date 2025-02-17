@@ -1,0 +1,17 @@
+select 
+customer_id
+,transaction_date_timestamp_utc
+,extract(day from transaction_date_timestamp_utc) as dia
+,extract(month from transaction_date_timestamp_utc) as mes
+,extract(year from transaction_date_timestamp_utc) as ano
+,extract(quarter from transaction_date_timestamp_utc) as quarter
+,extract(hour from transaction_date_timestamp_utc) as hora
+,extract(minute from transaction_date_timestamp_utc) as minuto
+,extract(second from transaction_date_timestamp_utc) as segundo
+,extract(microsecond from transaction_date_timestamp_utc) as microsegundo
+,extract(week from transaction_date_timestamp_utc) as semana
+,extract(dayofweek from transaction_date_timestamp_utc) as dia_semana
+,extract(dayofyear from transaction_date_timestamp_utc) as dia_ano
+,extract(date from transaction_date_timestamp_utc) as fecha
+,extract(time from transaction_date_timestamp_utc) as tiempo
+from `curso-bigquery-450022.aprendiendo_bq.retail_transaction`
