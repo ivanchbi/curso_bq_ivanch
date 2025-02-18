@@ -1,0 +1,16 @@
+with compras_fin_de_semana as
+(
+  select 'Cereal' as producto, 2 as cantidad, 3000 as precio
+  union all 
+  select 'LeCHe' as producto, 6 as cantidad, 6000 as precio  
+  union all 
+  select '1 kG CaRnE' as producto, 1 as cantidad, 7000 as precio  
+)
+select *
+from compras_fin_de_semana
+
+select producto, lower(producto) as minuscula, cantidad, precio
+from compras_fin_de_semana
+
+select producto, upper(producto) as minuscula, cantidad, precio
+from compras_fin_de_semana
