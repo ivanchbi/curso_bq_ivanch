@@ -1,0 +1,21 @@
+select concat(1,'video','-',2,' hola',' unir con ',current_date())
+
+
+with datos_nombre_apellido as 
+(
+  select 'Juan' as nombre, 'Perez' as apellido
+  union all 
+  select 'Catalina' as nombre, 'Vallejo' as apellido
+  union all 
+  select 'Marcelo' as nombre, 'Vieira' as apellido
+  union all
+  select 'Jude' as nombre, 'Bellingham' as apellido
+)
+select *
+from datos_nombre_apellido
+
+select nombre, apellido, concat(nombre,apellido) as nombre_apellido
+from datos_nombre_apellido
+
+select nombre, apellido, concat(nombre,' ', apellido) as nombre_apellido
+from datos_nombre_apellido
