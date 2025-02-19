@@ -1,0 +1,26 @@
+with datos_reemplazar as 
+(
+  select 'hoy compre un computador' as frase
+  union all 
+  select 'mi computador esta fallando' as frase
+)
+select frase
+from datos_reemplazar
+
+
+
+select frase, replace(frase, 'computador', 'playstation') as nueva_frase
+from datos_reemplazar
+
+
+
+
+
+
+with datos_reemplazar as 
+(
+  select 'hoy_compre.un   computador' as frase
+  
+)
+select frase, replace(replace(replace(frase,'_',' '),'.',' '),'   ',' ') as frase_limpia
+from datos_reemplazar
