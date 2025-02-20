@@ -1,0 +1,16 @@
+with 
+datos as 
+(
+  select 'computador' as palabra
+  union all 
+  select 'playstation' as palabra
+  union all 
+  select 'sol' as palabra
+
+)
+select palabra, substr(palabra,2,3)
+from datos
+
+
+select palabra, substr(palabra,-5,3)
+from datos
