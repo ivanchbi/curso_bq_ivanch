@@ -1,0 +1,25 @@
+with longitud_datos as 
+(
+  select 'hoy va a llover  ' as frase
+  union all 
+  select 'tengo hambre' as frase
+)
+select frase, length(frase)
+from longitud_datos
+
+
+
+
+
+
+with longitud_datos as 
+(
+  select 1 as usuario, 'ios 13.0' as sistema_operativo_celular
+  union all 
+  select 2 as usuario, 'ios 14.54' as sistema_operativo_celular
+  union all 
+  select 3 as usuario, 'ios 15.1' as sistema_operativo_celular
+)
+select usuario, sistema_operativo_celular
+,right(sistema_operativo_celular,(length(sistema_operativo_celular)-4)) as version_sistema_operativo
+from longitud_datos
