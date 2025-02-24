@@ -1,0 +1,73 @@
+with datos as 
+(
+  select 'Eduardo' as nombre, 'M' as genero, 'chile' as nacionalidad
+  union all 
+  select 'Daniel' as nombre, 'M' as genero, 'peru' as nacionalidad
+  union all 
+  select 'Marco' as nombre, 'M' as genero, 'chile' as nacionalidad
+  union all 
+  select 'Jose' as nombre, 'M' as genero, 'brazil' as nacionalidad
+  union all 
+  select 'Catalina' as nombre, 'F' as genero, 'chile' as nacionalidad
+  union all 
+  select 'Sofia' as nombre, 'F' as genero, 'chile' as nacionalidad
+  union all 
+  select 'Alana' as nombre, 'F' as genero, 'brazil' as nacionalidad
+  union all 
+  select 'Jennifer' as nombre, 'F' as genero, 'usa' as nacionalidad
+  union all 
+  select 'Claudia' as nombre, 'F' as genero, 'chile' as nacionalidad
+  union all 
+  select 'Marta' as nombre, 'F' as genero, 'brazil' as nacionalidad                  
+)
+select nombre, genero, nacionalidad
+from datos
+
+select nombre, genero, nacionalidad
+  ,case genero
+    when 'M' then 'hombre'
+    when 'F' then 'mujer' else 'sin genero' end as nuevo_genero
+from datos
+
+select nombre, genero, nacionalidad
+  ,case nombre
+    when 'M' then 'hombre'
+    when 'F' then 'mujer'  end as nuevo_genero
+from datos
+
+
+select nombre, genero, nacionalidad
+  ,case genero
+    when 'M' then 'hombre'
+    when 'F' then 'mujer' else 'sin genero' end as genero_forma1
+  
+  ,case
+    when genero = 'M' then 'hombre'
+    when genero = 'F' then 'mujer' else 'sin genero' end as genero_forma2
+from datos
+
+
+
+
+
+with gasto_total_cliente as 
+(
+  select customer_id, round(sum(total_amoun),0) as gasto_cliente
+  from `curso-bigquery-450022.aprendiendo_bq.retail_transaction`
+  group by 1
+)
+,informacion_final as 
+(
+select a.customer_id, a.gasto_cliente, b.age
+  ,case 
+    when b.age <= 30 and gasto_cliente <= 100 then 'menor 30 anos, gasta menos de 100 dolares'
+    when b.age <= 30 and gasto_cliente > 100 then 'menor 30 anos, gasta mas de 100 dolares'
+    when b.age > 30 and gasto_cliente <= 100 then 'mayor 30 anos, gasta menos de 100 dolares'
+    when b.age > 30 and gasto_cliente > 100 then 'mayor 30 anos, gasta mas de 100 dolares'
+    else 'otro caso' end as clasificacion_gasto_cliente  
+from gasto_total_cliente a
+  left join `aprendiendo_bq.retail_customer` b on a.customer_id = b.customer_id
+)
+select clasificacion_gasto_cliente, count(distinct customer_id) as n_clientes
+from informacion_final 
+group by 1 order by 1 desc
